@@ -1,0 +1,285 @@
+$gray: #ddd;
+$gray-text: #9EABB3;
+$white: #fff;
+$space-black: #3A4145;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-size: 1.125em;
+}
+
+body {
+  background-color: white;
+  font-family: sans-serif;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #0a0f1e;
+}
+
+
+header,
+.promo,
+main,
+footer {
+  padding: 0 1.5em;
+}
+
+p {
+  margin: 1.3em 0;
+}
+
+a {
+  color: #0366d6;
+}
+
+h1, h2, h3, h4 {
+  margin: 2em 0 0.5em;
+  font-weight: inherit;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 3.998em;
+}
+
+h2 {font-size: 2.827em;}
+
+h3 {font-size: 1.999em;}
+
+h4 {font-size: 1.414em;}
+
+small, .font_small {font-size: 0.707em;}
+
+input, button {
+  outline: none;
+  font-size: inherit;
+  padding: .7em 1em;
+  border: 0;
+}
+
+input {
+  &:focus {
+    box-shadow: inset 0 0 0 1px #000;
+  }
+}
+
+button {
+  background: linear-gradient(135deg, #ffb01a 0%, #ea1e3e 100%);
+  box-shadow: inset 0 -.8em 1em 0 rgba(200, 0, 0, .2);
+  color: #fff;
+  border-radius: 2em;
+  min-width: 8em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: none;
+  }
+  &:active {
+    box-shadow: inset 0 -.2em .2em 0 rgba(100, 0, 0, .5);
+  }
+
+  &.load  {
+    cursor: default;
+    position: relative;
+    color: transparent;
+    box-shadow: none;
+  }
+
+  &.load:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    display: block;
+    height: 10px;
+    width: 10px;
+    border: 2px solid #fff;
+    border-right-color: transparent;
+    border-radius: 7px;
+    animation: rotating 1s infinite linear;
+  }
+}
+
+.promo {
+  position: relative;
+  min-height: 50vh;
+  background: #555;
+  color: #fff;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+
+  section {
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    z-index: 1;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  h1 {
+    margin:  auto;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #04132f;
+    opacity: .6;
+  }
+}
+
+blockquote {
+  background: #f2f2f2;
+  padding: .3em 2em;
+  margin: 0 -2em;
+}
+
+section {
+  position: relative;
+  max-width: 970px;
+  margin: 4em auto;
+}
+
+footer {
+  background: #f2f2f2;
+  border-top: 1px solid #eee;
+  overflow: hidden;
+  color: #999;
+  margin-top: 6em;
+  section {
+    margin: 1em auto;
+  }
+}
+
+.works {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 4em -5px 0;
+  img {
+    position: relative;
+    max-width: 100%;
+    display: block;
+    border: 5px solid #fff;
+    border-width: 10px 5px;
+    background: #eee;
+
+    &:nth-child(1) {
+      width: 60%
+    }
+
+    &:nth-child(2) {
+      width: 40%;
+      top: 20%;
+      margin-top: -5%;
+    }
+
+    &:nth-child(3) {
+      width: 35%;
+      margin-top: -20%;
+      margin-left: 50%;
+      border-width: 10px;
+    }
+  }
+}
+
+form {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  label {
+    display: block;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    input {
+      background: #f2f2f2;
+      border: none;
+      width: 100%;
+    }
+    span {
+      display: block;
+      font-style: italic;
+      font-size: .8em;
+      color: #999;
+    }
+
+    &.error {
+      span {
+        color: #f00;
+      }
+      input {
+        box-shadow: inset 0 0 0 2px #f00;
+      }
+    }
+  }
+}
+.info-text {
+  display: none;
+  &.visible {
+    display: block;
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  h1 {
+    font-size: 8vw;
+  }
+  blockquote {
+    margin: 0 -1.5em;
+  }
+
+  .works {
+    img {
+      width: 100% !important;
+      margin: .5em 0 !important;
+      border: 0 !important;
+      position: static;
+    }
+  }
+  form {
+    display: block;
+    label {
+      margin-right: 0;
+      input {
+        width: 100%;
+      }
+    }
+  }
+}

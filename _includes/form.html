@@ -1,0 +1,52 @@
+<form action="https://drive.denisborodin.com/forms/promo-bike.php" method="POST" onsubmit="return false;">
+  <label><input type="text" name="name" /><span>Вас зовут</span></label>
+  <label><input type="text" name="contact" placeholder="+7 (___) ___ - __ - __"/><span>Ваш телефон</span></label>
+  <button>Перезвоните мне</button>
+</form>
+<p class="info-text">Спасибо!<br/>Мы свяжемся с вами как можно быстрее.</p>
+<script>
+var Forms = {
+  init: function() {
+    for (var i = 0; i < document.forms.length; i++) {
+      document.forms[i].addEventListener('submit', Forms.submit);
+    }
+  },
+  check: function(form) {
+    var flag;
+    var inputs = form.getElementsByTagName('input');
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].parentElement.classList[inputs[i].value ? 'remove' : flag = 'add']('error');
+      if (!inputs[i].oninput) inputs[i].oninput = Forms.check.bind(false, form);
+    }
+    return !flag;
+  },
+  submit: function(e) {
+    var form  = e.currentTarget;
+    if (!Forms.check(form)) {
+      return false;
+    }
+    var formData = new FormData(form);
+    var button = form.querySelector('input[type="submit"], input[type="button"], button');
+    button.classList.add('load');
+    console.log(formData, form);
+    //formData.append('yandexKey', Math.random().toString(16).split('.')[1];);
+    var xhr = new XMLHttpRequest();
+    xhr.onload = xhr.onerror = function() {
+      if (this.status == 200) {
+        document.body.querySelector('.info-text').classList.add('visible');
+        form.reset();
+        button.classList.remove('load');
+        console.log('Отправленно');
+        // yaCounter24409828.reachGoal('submit-form');
+      } else {
+        console.log('Ошибка');
+      }
+    };
+    xhr.open(form.method, form.action, true);
+    xhr.send(formData);
+    return false;
+  }
+};
+Forms.init();
+
+</script>

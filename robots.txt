@@ -1,0 +1,3 @@
+User-agent: *
+Host: https://promo-bike.ru/
+Sitemap: https://promo-bike.ru/sitemap.xml
